@@ -1,12 +1,43 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { render } from 'react-dom';
 import reportWebVitals from './reportWebVitals';
-
-ReactDOM.render(
+import { Drones, Home, Login } from './components';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <div>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/drones">Your Drone Collection</Link>
+          </li>
+          <li>
+            <Link to="/login">Login here</Link>
+          </li>
+        </ul>
+      </div>
+
+    <Switch>
+      <Route exact path ="/">
+        <Home></Home>
+      </Route>
+      <Route path ="/drones">
+        <Drones></Drones>
+      </Route>
+      <Route path ="/login">
+        <Login></Login>
+      </Route>
+    </Switch>
+    </Router>
+
   </React.StrictMode>,
   document.getElementById('root')
 );
